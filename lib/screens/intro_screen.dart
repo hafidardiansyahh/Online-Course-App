@@ -29,7 +29,7 @@ class IntroScreen extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: "Poppins-Regular",
                         fontSize: 24,
-                        color: darkColor),
+                        color: Colors.grey[700]),
                   ),
                 ],
               ),

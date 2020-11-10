@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_options.dart';
@@ -66,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     "Find a perfect course for you",
                     style: TextStyle(
-                        color: Colors.grey,
+                        color: Colors.grey[700],
                         fontSize: 18,
                         fontFamily: "Poppins-Regular"),
                   ),
@@ -92,52 +90,41 @@ class _HomeScreenState extends State<HomeScreen> {
                             EdgeInsets.symmetric(horizontal: 5.0, vertical: 20),
                         decoration: BoxDecoration(
                             color: colors[i],
-                            borderRadius: BorderRadius.circular(20)),
-                        child: Row(
+                            borderRadius: BorderRadius.circular(20),
+                            image: DecorationImage(
+                                alignment: Alignment.centerRight,
+                                image: AssetImage(categories[i].image),
+                                fit: BoxFit.cover)),
+                        child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Online \nCourse \ntext $i',
-                                  style: TextStyle(
-                                      fontSize: 16.0,
-                                      fontFamily: "Poppins-Regular",
-                                      color: darkColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Material(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
-                                  color: primaryColor,
-                                  child: InkWell(
-                                    splashColor: greyColor,
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(30)),
-                                    onTap: () {
-                                      Navigator.of(context).pushReplacement(
-                                          MaterialPageRoute(
-                                              builder: (BuildContext context) {
-                                        return HomeScreen();
-                                      }));
-                                    },
-                                    child: Container(
-                                        width: 40,
-                                        height: 40,
-                                        child: Center(
-                                          child: Icon(Icons.play_arrow_outlined,
-                                              color: Colors.white),
-                                        )),
-                                  ),
-                                ),
-                              ],
+                            Text(
+                              'Online \nCourse \ntext $i',
+                              style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontFamily: "Poppins-Regular",
+                                  color: darkColor,
+                                  fontWeight: FontWeight.w600),
                             ),
-                            Image.asset(
-                              "assets/images/img1.png",
-                              width: 150,
-                            )
+                            Material(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
+                              color: primaryColor,
+                              child: InkWell(
+                                splashColor: darkColor,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(30)),
+                                onTap: () {},
+                                child: Container(
+                                    width: 40,
+                                    height: 40,
+                                    child: Center(
+                                      child: Icon(Icons.play_arrow_outlined,
+                                          color: Colors.white),
+                                    )),
+                              ),
+                            ),
                           ],
                         ));
                   },
@@ -172,35 +159,38 @@ class _HomeScreenState extends State<HomeScreen> {
                 crossAxisSpacing: 20,
                 mainAxisSpacing: 20,
                 itemBuilder: (context, index) {
-                  return Container(
-                    padding: EdgeInsets.all(20),
-                    height: index.isEven ? 200 : 240,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: colors[index],
-                        image: DecorationImage(
-                            alignment: Alignment.bottomCenter,
-                            image: AssetImage(categories[index].image),
-                            fit: BoxFit.contain)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          categories[index].name,
-                          style: TextStyle(
-                              fontFamily: "Poppins-Regular",
-                              fontWeight: FontWeight.w600,
-                              color: darkColor,
-                              fontSize: 18),
-                        ),
-                        Text(
-                          '${categories[index].numOfCourses} Courses',
-                          style: TextStyle(
-                              fontFamily: "Poppins-Regular",
-                              color: Colors.grey,
-                              fontSize: 16),
-                        )
-                      ],
+                  return InkWell(
+                    onTap: () {},
+                    child: Container(
+                      padding: EdgeInsets.all(20),
+                      height: index.isEven ? 200 : 240,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: colors[index],
+                          image: DecorationImage(
+                              alignment: Alignment.bottomCenter,
+                              image: AssetImage(categories[index].image),
+                              fit: BoxFit.contain)),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            categories[index].name,
+                            style: TextStyle(
+                                fontFamily: "Poppins-Regular",
+                                fontWeight: FontWeight.w600,
+                                color: darkColor,
+                                fontSize: 18),
+                          ),
+                          Text(
+                            '${categories[index].numOfCourses} Courses',
+                            style: TextStyle(
+                                fontFamily: "Poppins-Regular",
+                                color: Colors.grey[700],
+                                fontSize: 16),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },
