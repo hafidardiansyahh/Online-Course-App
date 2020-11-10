@@ -1,7 +1,11 @@
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'dart:math';
+
 import 'package:flutter/material.dart';
-import 'package:online_course_v2/utilities/constants.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:online_course_v2/model/category_model.dart';
+import 'package:online_course_v2/utilities/constants_utilities.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,6 +17,13 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
 
+    List colors = [
+      Colors.blue[50],
+      Colors.red[50],
+      Colors.green[50],
+      Colors.yellow[50],
+    ];
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -21,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.menu,
-            color: primaryColor,
+            color: darkColor,
           ),
           onPressed: () {},
         ),
@@ -29,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
               icon: Icon(
                 Icons.search_outlined,
-                color: primaryColor,
+                color: darkColor,
               ),
               onPressed: () {})
         ],
@@ -37,7 +48,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         width: double.infinity,
         height: size.height,
-        child: ListView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 20),
@@ -47,14 +59,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   Text(
                     "Hi Hafid",
                     style: TextStyle(
-                        color: primaryColor,
+                        color: darkColor,
                         fontSize: 36,
                         fontFamily: "Poppins-SemiBold"),
                   ),
                   Text(
                     "Find a perfect course for you",
                     style: TextStyle(
-                        color: lightColor,
+                        color: Colors.grey,
                         fontSize: 18,
                         fontFamily: "Poppins-Regular"),
                   ),
@@ -70,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 autoPlayCurve: Curves.easeInQuad,
                 enlargeCenterPage: true,
               ),
-              items: [1, 2, 3, 4, 5].map((i) {
+              items: [0, 1, 2, 3].map((i) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
@@ -79,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         margin:
                             EdgeInsets.symmetric(horizontal: 5.0, vertical: 20),
                         decoration: BoxDecoration(
-                            color: lightColor,
+                            color: colors[i],
                             borderRadius: BorderRadius.circular(20)),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -93,12 +105,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                   style: TextStyle(
                                       fontSize: 16.0,
                                       fontFamily: "Poppins-Regular",
-                                      color: Colors.white),
+                                      color: darkColor,
+                                      fontWeight: FontWeight.w600),
                                 ),
                                 Material(
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(30)),
-                                  color: Colors.white,
+                                  color: primaryColor,
                                   child: InkWell(
                                     splashColor: greyColor,
                                     borderRadius:
@@ -115,7 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         height: 40,
                                         child: Center(
                                           child: Icon(Icons.play_arrow_outlined,
-                                              color: primaryColor),
+                                              color: Colors.white),
                                         )),
                                   ),
                                 ),
@@ -133,51 +146,65 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Text(
-                "Online Course",
-                style: TextStyle(
-                    fontFamily: "Poppins-SemiBold",
-                    color: darkColor,
-                    fontSize: 24),
-              ),
-            ),
-            Container(
-              width: double.infinity,
-              margin: EdgeInsets.only(top: 20),
-              padding: EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 160,
-                    height: 240,
+                  Text(
+                    "Online Course",
+                    style: TextStyle(
+                        fontFamily: "Poppins-SemiBold",
+                        color: darkColor,
+                        fontSize: 24),
+                  ),
+                  Text("See All",
+                      style: TextStyle(
+                          fontFamily: "Poppins-Regular",
+                          color: primaryColor,
+                          fontSize: 16))
+                ],
+              ),
+            ),
+            Expanded(
+              child: StaggeredGridView.countBuilder(
+                padding: EdgeInsets.all(20),
+                crossAxisCount: 2,
+                itemCount: categories.length,
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20,
+                itemBuilder: (context, index) {
+                  return Container(
                     padding: EdgeInsets.all(20),
+                    height: index.isEven ? 200 : 240,
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: primaryColor,
-                    ),
+                        borderRadius: BorderRadius.circular(20),
+                        color: colors[index],
+                        image: DecorationImage(
+                            alignment: Alignment.bottomCenter,
+                            image: AssetImage(categories[index].image),
+                            fit: BoxFit.contain)),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Web Programming",
-                            style: TextStyle(
-                                fontFamily: "Poppins-Regular",
-                                color: Colors.white,
-                                fontSize: 17)),
-                        Text("16 Course",
-                            style: TextStyle(
-                                fontFamily: "Poppins-Regular",
-                                color: Colors.white70,
-                                fontSize: 16)),
-                        Image.asset(
-                          "assets/images/img1.png",
-                          height: 120,
+                        Text(
+                          categories[index].name,
+                          style: TextStyle(
+                              fontFamily: "Poppins-Regular",
+                              fontWeight: FontWeight.w600,
+                              color: darkColor,
+                              fontSize: 18),
+                        ),
+                        Text(
+                          '${categories[index].numOfCourses} Courses',
+                          style: TextStyle(
+                              fontFamily: "Poppins-Regular",
+                              color: Colors.grey,
+                              fontSize: 16),
                         )
                       ],
                     ),
-                  ),
-                ],
+                  );
+                },
+                staggeredTileBuilder: (index) => StaggeredTile.fit(1),
               ),
             )
           ],

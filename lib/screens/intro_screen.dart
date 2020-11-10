@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_course_v2/screens/home_screen.dart';
-import 'package:online_course_v2/utilities/constants.dart';
+import 'package:online_course_v2/utilities/constants_utilities.dart';
 
 class IntroScreen extends StatelessWidget {
   @override
@@ -8,7 +8,7 @@ class IntroScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: primaryColor,
+      backgroundColor: Colors.blue[50],
       body: Stack(
         children: [
           Positioned(bottom: 0, child: Image.asset("assets/images/splash.png")),
@@ -22,14 +22,14 @@ class IntroScreen extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: "Poppins-SemiBold",
                         fontSize: 36,
-                        color: Colors.white),
+                        color: darkColor),
                   ),
                   Text(
                     "Learn with Onlearn",
                     style: TextStyle(
                         fontFamily: "Poppins-Regular",
                         fontSize: 24,
-                        color: Colors.white),
+                        color: darkColor),
                   ),
                 ],
               ),
