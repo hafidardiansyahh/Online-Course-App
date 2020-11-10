@@ -7,8 +7,8 @@
         <th>Detail Screen</th>
     </tr>
     <tr>
-        <td><img src="ss1.jpg"></td>
-        <td><img src="ss2.jpg"></td>
-        <td><img src="ss3.jpg"></td>
+        <td><img src="ss_intro_screen.jpg"></td>
+        <td><img src="ss_home_screen.jpg"></td>
+        <td><img src="ss_detail_screen.jpg"></td>
     </tr>
 </table>

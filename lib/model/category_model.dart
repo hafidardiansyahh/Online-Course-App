@@ -27,8 +27,8 @@ var categoriesData = [
     "image": "assets/images/img3.png",
   },
   {
-    "name": "Flutter",
-    "course": 1,
+    "name": "Mobile Developer",
+    "course": 13,
     "image": "assets/images/img4.png",
   },
 ];

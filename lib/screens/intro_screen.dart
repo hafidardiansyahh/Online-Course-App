@@ -19,16 +19,9 @@ class IntroScreen extends StatelessWidget {
                 children: [
                   Text(
                     "Online Learning",
-                    style: TextStyle(
-                        fontFamily: "Poppins-SemiBold",
-                        fontSize: 36,
-                        color: Colors.white),
+                    style: h1,
                   ),
-                  Text("Learn with Onlearn",
-                      style: TextStyle(
-                          fontFamily: "Poppins-Regular",
-                          fontSize: 24,
-                          color: Colors.white70)),
+                  Text("Learn with Onlearn", style: h3White),
                 ],
               ),
             ),
@@ -36,8 +29,8 @@ class IntroScreen extends StatelessWidget {
           Align(
             alignment: Alignment(0, 0.8),
             child: Material(
-              borderRadius: BorderRadius.all(Radius.circular(30)),
               color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(30)),
               child: InkWell(
                 splashColor: greyColor,
                 borderRadius: BorderRadius.all(Radius.circular(30)),
@@ -53,10 +46,7 @@ class IntroScreen extends StatelessWidget {
                   child: Center(
                       child: Text(
                     "Continue",
-                    style: TextStyle(
-                        fontFamily: "Poppins-SemiBold",
-                        fontSize: 24,
-                        color: darkColor),
+                    style: h1Black,
                   )),
                 ),
               ),
