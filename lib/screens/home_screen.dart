@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:online_course_v2/model/category_model.dart';
+import 'package:online_course_v2/screens/detail_screen.dart';
 import 'package:online_course_v2/utilities/constants_utilities.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -73,7 +74,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             CarouselSlider(
               options: CarouselOptions(
-                enableInfiniteScroll: true,
                 autoPlay: true,
                 autoPlayInterval: Duration(seconds: 3),
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
@@ -160,7 +160,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisSpacing: 20,
                 itemBuilder: (context, index) {
                   return InkWell(
-                    onTap: () {},
+                    borderRadius: BorderRadius.circular(20),
+                    onTap: () {
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (BuildContext context) {
+                        return DetailScreen();
+                      }));
+                    },
                     child: Container(
                       padding: EdgeInsets.all(20),
                       height: index.isEven ? 200 : 240,

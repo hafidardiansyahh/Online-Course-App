@@ -8,7 +8,7 @@ class IntroScreen extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
 
     return Scaffold(
-      backgroundColor: Colors.blue[50],
+      backgroundColor: primaryColor,
       body: Stack(
         children: [
           Positioned(bottom: 0, child: Image.asset("assets/images/splash.png")),
@@ -22,15 +22,13 @@ class IntroScreen extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: "Poppins-SemiBold",
                         fontSize: 36,
-                        color: darkColor),
+                        color: Colors.white),
                   ),
-                  Text(
-                    "Learn with Onlearn",
-                    style: TextStyle(
-                        fontFamily: "Poppins-Regular",
-                        fontSize: 24,
-                        color: Colors.grey[700]),
-                  ),
+                  Text("Learn with Onlearn",
+                      style: TextStyle(
+                          fontFamily: "Poppins-Regular",
+                          fontSize: 24,
+                          color: Colors.white70)),
                 ],
               ),
             ),
@@ -41,7 +39,7 @@ class IntroScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               color: Colors.white,
               child: InkWell(
-                splashColor: greyColor,
+                splashColor: lightColor,
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 onTap: () {
                   Navigator.of(context).pushReplacement(
@@ -58,7 +56,7 @@ class IntroScreen extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: "Poppins-SemiBold",
                         fontSize: 24,
-                        color: primaryColor),
+                        color: darkColor),
                   )),
                 ),
               ),

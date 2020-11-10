@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:online_course_v2/screens/home_screen.dart';
 import 'package:online_course_v2/utilities/constants_utilities.dart';
+import 'package:online_course_v2/widgets/course_content_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   @override
@@ -9,6 +11,8 @@ class DetailScreen extends StatefulWidget {
 class _DetailScreenState extends State<DetailScreen> {
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -18,7 +22,12 @@ class _DetailScreenState extends State<DetailScreen> {
             Icons.navigate_before_outlined,
             color: darkColor,
           ),
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context)
+                .pop(MaterialPageRoute(builder: (BuildContext context) {
+              return HomeScreen();
+            }));
+          },
         ),
         actions: [
           IconButton(
@@ -65,9 +74,8 @@ class _DetailScreenState extends State<DetailScreen> {
                   Text(
                     "Design Thinking",
                     style: TextStyle(
-                        fontFamily: "Poppins-Regular",
+                        fontFamily: "Poppins-SemiBold",
                         fontSize: 26,
-                        fontWeight: FontWeight.w600,
                         color: darkColor),
                   ),
                   SizedBox(height: 16),
@@ -115,7 +123,7 @@ class _DetailScreenState extends State<DetailScreen> {
             SizedBox(height: 38),
             Expanded(
                 child: Container(
-                    padding: EdgeInsets.all(20),
+                    padding: EdgeInsets.symmetric(horizontal: 20),
                     width: double.infinity,
                     decoration: BoxDecoration(
                         borderRadius:
@@ -124,18 +132,110 @@ class _DetailScreenState extends State<DetailScreen> {
                     child: Stack(
                       children: [
                         Padding(
-                          padding: EdgeInsets.all(20),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Course Content",
-                                  style: TextStyle(
-                                      fontFamily: "Poppins-SemiBold",
-                                      fontSize: 22,
-                                      color: darkColor))
-                            ],
+                          padding:
+                              EdgeInsets.only(left: 10, right: 10, top: 40),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Course Content",
+                                    style: TextStyle(
+                                        fontFamily: "Poppins-SemiBold",
+                                        fontSize: 22,
+                                        color: darkColor)),
+                                SizedBox(height: 30),
+                                CourseContentWidget(
+                                  number: "01",
+                                  duration: 5.35,
+                                  title: "Welcome to the Course",
+                                  isDone: true,
+                                ),
+                                CourseContentWidget(
+                                  number: "02",
+                                  duration: 10.21,
+                                  title: "Flutter Fundamental - Intro",
+                                  isDone: true,
+                                ),
+                                CourseContentWidget(
+                                  number: "03",
+                                  duration: 24.03,
+                                  title: "Dart Basic",
+                                  isDone: false,
+                                ),
+                                CourseContentWidget(
+                                  number: "04",
+                                  duration: 58.22,
+                                  title: "Flutter Basic",
+                                  isDone: false,
+                                ),
+                                CourseContentWidget(
+                                  number: "05",
+                                  duration: 24.35,
+                                  title: "Flutter UI",
+                                  isDone: false,
+                                ),
+                              ],
+                            ),
                           ),
-                        )
+                        ),
+                        Positioned(
+                            left: 0,
+                            right: 0,
+                            bottom: 20,
+                            child: Container(
+                              padding: EdgeInsets.all(20),
+                              height: 80,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(40),
+                                  boxShadow: [
+                                    BoxShadow(
+                                        offset: Offset(0, 4),
+                                        blurRadius: 50,
+                                        color: darkColor.withOpacity(.1))
+                                  ]),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Container(
+                                    height: size.height * 0.06,
+                                    width: size.width * 0.2,
+                                    decoration: BoxDecoration(
+                                        color: lightColor,
+                                        borderRadius:
+                                            BorderRadius.circular(40)),
+                                    child: Icon(Icons.shopping_bag_outlined,
+                                        color: Colors.white),
+                                  ),
+                                  SizedBox(width: 20),
+                                  Material(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(30)),
+                                    color: primaryColor,
+                                    child: InkWell(
+                                      splashColor: lightColor,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(30)),
+                                      onTap: () {},
+                                      child: Container(
+                                        width: size.width * 0.54,
+                                        height: 40,
+                                        child: Center(
+                                            child: Text(
+                                          "Buy Now",
+                                          style: TextStyle(
+                                              fontFamily: "Poppins-SemiBold",
+                                              fontSize: 18,
+                                              color: Colors.white),
+                                        )),
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ))
                       ],
                     )))
           ],
