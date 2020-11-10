@@ -39,7 +39,7 @@ class IntroScreen extends StatelessWidget {
               borderRadius: BorderRadius.all(Radius.circular(30)),
               color: Colors.white,
               child: InkWell(
-                splashColor: lightColor,
+                splashColor: greyColor,
                 borderRadius: BorderRadius.all(Radius.circular(30)),
                 onTap: () {
                   Navigator.of(context).pushReplacement(

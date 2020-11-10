@@ -72,7 +72,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "Design Thinking",
+                    "Flutter Course",
                     style: TextStyle(
                         fontFamily: "Poppins-SemiBold",
                         fontSize: 26,
