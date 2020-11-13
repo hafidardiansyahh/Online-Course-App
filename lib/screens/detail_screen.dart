@@ -17,6 +17,7 @@ class _DetailScreenState extends State<DetailScreen> {
     SolidController _controller = SolidController();
 
     return Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
             elevation: 0,
             backgroundColor: Colors.blue[50],
@@ -61,9 +62,11 @@ class _DetailScreenState extends State<DetailScreen> {
         ),
         bottomSheet: SolidBottomSheet(
             controller: _controller,
+            elevation: 0,
             maxHeight: size.height * 0.86,
             minHeight: size.height * 0.6,
             headerBar: Container(
+              color: Colors.white,
               width: double.infinity,
               child: Center(
                   child: Text(
@@ -71,7 +74,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 style: TextStyle(fontSize: 24, color: primaryColor),
               )),
             ),
-            body: Padding(
+            body: Container(
+              color: Colors.white,
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: Stack(children: [
                 SingleChildScrollView(
@@ -162,21 +166,21 @@ class _DetailScreenState extends State<DetailScreen> {
                                 TextSpan(
                                   text: "Price\n",
                                   style: TextStyle(
-                                    fontSize: 14,
                                     color: Colors.grey,
                                     fontFamily: "Poppins-Regular",
                                   ),
                                 ),
+                                TextSpan(text: "\$50", style: h4Bold),
                                 TextSpan(
                                   text: "\$70",
                                   style: TextStyle(
-                                    fontSize: 16,
-                                    color: darkColor,
-                                    fontFamily: "Poppins-SemiBold",
+                                    fontSize: 13,
+                                    fontFamily: "Poppins-Regular",
+                                    color: Colors.grey.withOpacity(.5),
+                                    decoration: TextDecoration.lineThrough,
                                   ),
                                 ),
                               ])),
-                              SizedBox(width: 20),
                               Material(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(30)),
