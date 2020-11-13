@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:online_course_v2/screens/home_screen.dart';
 import 'package:online_course_v2/utilities/constants_utilities.dart';
 import 'package:online_course_v2/widgets/course_content_widget.dart';
+import 'package:online_course_v2/widgets/creator_content_widget.dart';
 
 class DetailScreen extends StatefulWidget {
   @override
@@ -29,14 +30,6 @@ class _DetailScreenState extends State<DetailScreen> {
             }));
           },
         ),
-        actions: [
-          IconButton(
-              icon: Icon(
-                Icons.more_vert_outlined,
-                color: darkColor,
-              ),
-              onPressed: () {})
-        ],
       ),
       body: Container(
         width: double.infinity,
@@ -116,6 +109,14 @@ class _DetailScreenState extends State<DetailScreen> {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
+                                Text("About Course", style: h2),
+                                SizedBox(height: 20),
+                                CreatorContentWidget(
+                                    img:
+                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTYX1dyl9INRo5cbvDeTILRcZVzfcMsCsE0kg&usqp=CAU",
+                                    job: "Mobile Development",
+                                    name: "Alex",
+                                    desc: "Flutter Course Zero to Zero"),
                                 Text("Course Content", style: h2),
                                 SizedBox(height: 30),
                                 CourseContentWidget(
