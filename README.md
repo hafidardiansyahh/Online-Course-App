@@ -12,7 +12,7 @@
 
 ### 🤔 Apa itu Courseadri?
 
-Courseadri adalah website personal saya. Menggunakan teknologi Flutter.
+Courseadri adalah aplikasi belajar secara online, yang dibuat oleh <a href="https://github.com/hafidardiansyah"> Hafid Ardiansyah</a>. Menggunakan teknologi Flutter.
 
 ### 🎉 Kenapa membuat Courseadri?
 
