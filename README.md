@@ -18,11 +18,6 @@ Courseadri adalah aplikasi belajar secara online, yang dibuat oleh <a href="http
 
 Karena untuk melatih saya mengimplementasikan UI design di Flutter.
 
-### :link: Social Media
-
-- Instagram : <a href="http://instagram.com/dev.hafid"> @dev.hafid</a>
-- Dribbble : <a href="https://dribbble.com/hafidardiansyah"> hafidardiansyah</a>
-
 ### 📝 Lisensi
 
 - Copyright © 2020 Hafid Ardiansyah.
